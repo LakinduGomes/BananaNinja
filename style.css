@@ -1,17 +1,20 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
 
 :root {
-  --rich-gold: #c5a059;
-  --soft-gold: #fdf8f0;
-  --pure-white: #ffffff;
-  --shadow-main: rgba(197, 160, 89, 0.12);
+  --gold-rich: #d4af37;
+  --gold-soft: rgba(212, 175, 55, 0.15);
+  --white-pure: #ffffff;
   --text-dark: #1a1a1a;
-  --text-light: #6e6e73;
+  --text-light: #888888;
   --success: #34c759;
   --error: #ff3b30;
   --card-radius: 32px;
+  --shadow-main: rgba(0,0,0,0.08);
+  --btn-gradient: linear-gradient(135deg, #fcd34d, #d4af37);
 }
 
+/* --- Reset & Body --- */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -20,62 +23,68 @@
 
 body {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  background: radial-gradient(circle at top left, #ffffff, #f4f1ea);
+  background: radial-gradient(circle at top left, #fdf8f0, #f0e8dc);
   color: var(--text-dark);
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  padding: 24px;
+  padding: 20px;
 }
 
+/* --- App Container --- */
 .app {
   width: 100%;
   max-width: 480px;
   animation: fadeIn 0.8s ease-out;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Header Section */
+/* --- Header --- */
 .header {
   text-align: center;
   margin-bottom: 30px;
 }
 
 .header h1 {
-  font-size: 2.4rem;
+  font-size: 2.6rem;
   font-weight: 800;
-  color: var(--rich-gold);
-  letter-spacing: -1.5px;
-  margin-bottom: 4px;
+  background: linear-gradient(90deg, #fcd34d, #d4af37);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -1px;
+  margin-bottom: 6px;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 .header p {
   color: var(--text-light);
-  font-size: 0.95rem;
+  font-size: 1rem;
+  font-weight: 500;
 }
 
-/* Elite Card Styling */
+/* --- Glassmorphism Cards --- */
 .card {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(30px);
-  -webkit-backdrop-filter: blur(30px);
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
   border-radius: var(--card-radius);
   padding: 32px;
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  box-shadow: 0 30px 60px var(--shadow-main);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 20px 40px var(--shadow-main);
   position: relative;
+  transition: all 0.3s ease;
 }
 
-/* Input Fields */
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 25px 50px var(--shadow-main);
+}
+
+/* --- Inputs --- */
 .label {
   font-size: 0.75rem;
   font-weight: 700;
-  color: var(--rich-gold);
+  color: var(--gold-rich);
   text-transform: uppercase;
   letter-spacing: 1.2px;
   margin: 20px 0 8px 4px;
@@ -84,53 +93,62 @@ body {
 
 .input {
   width: 100%;
-  padding: 18px;
+  padding: 16px;
   border-radius: 18px;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  background: white;
+  border: 1px solid rgba(0,0,0,0.08);
+  background: rgba(255,255,255,0.8);
   font-size: 1rem;
   transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
 .input:focus {
   outline: none;
-  border-color: var(--rich-gold);
-  box-shadow: 0 0 0 4px var(--soft-gold);
+  border-color: var(--gold-rich);
+  box-shadow: 0 0 0 6px var(--gold-soft);
 }
 
-/* Avatar Selection */
+/* --- Avatar Selection --- */
 .avatars {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  display: flex;
   gap: 12px;
-  margin-bottom: 24px;
+  justify-content: center;
+  margin: 16px 0;
 }
 
 .avatarBtn {
-  aspect-ratio: 1;
-  border-radius: 18px;
+  border-radius: 50%;
   border: 2px solid transparent;
-  background: white;
-  font-size: 1.4rem;
+  padding: 4px;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
-.avatarBtn.selected {
-  border-color: var(--rich-gold);
+.avatarBtn img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: block;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.avatarBtn:hover img {
   transform: scale(1.1);
-  background: var(--soft-gold);
+  box-shadow: 0 6px 18px rgba(212, 175, 55, 0.3);
 }
 
-/* Premium Buttons */
+.avatarBtn.selected img {
+  border: 3px solid var(--gold-rich);
+  transform: scale(1.15);
+  box-shadow: 0 8px 20px rgba(212,175,55,0.4);
+}
+
+/* --- Buttons --- */
 .btn {
   width: 100%;
-  padding: 18px;
-  border-radius: 20px;
+  padding: 16px;
+  border-radius: 24px;
   border: none;
   font-weight: 700;
   font-size: 1.05rem;
@@ -140,17 +158,28 @@ body {
 }
 
 .btn.primary {
-  background: var(--rich-gold);
+  background: var(--btn-gradient);
   color: white;
-  box-shadow: 0 12px 24px rgba(197, 160, 89, 0.25);
+  box-shadow: 0 10px 25px rgba(212,175,55,0.3);
 }
 
 .btn.primary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 15px 30px rgba(197, 160, 89, 0.35);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 35px rgba(212,175,55,0.4);
 }
 
-/* GAMEPLAY: Top Bar Alignment */
+.btn.danger {
+  background: #ff3b30;
+  color: white;
+  box-shadow: 0 10px 25px rgba(255,59,48,0.3);
+}
+
+.btn.danger:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 35px rgba(255,59,48,0.4);
+}
+
+/* --- Gameplay Top Bar --- */
 .topBar {
   display: flex;
   justify-content: space-between;
@@ -161,24 +190,25 @@ body {
 .playerInfo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
-.playerAvatar { font-size: 1.8rem; }
-.playerName { font-weight: 700; font-size: 1.1rem; }
+.playerAvatar { font-size: 2rem; }
+.playerName { font-weight: 700; font-size: 1.15rem; }
 
-.stats { display: flex; gap: 8px; }
+.stats { display: flex; gap: 10px; }
 .stat {
-  padding: 6px 12px;
-  background: white;
-  border-radius: 12px;
-  font-size: 0.85rem;
+  padding: 6px 14px;
+  background: rgba(255,255,255,0.9);
+  border-radius: 14px;
+  font-size: 0.9rem;
   font-weight: 600;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.04);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
-.stat span { color: var(--rich-gold); }
 
-/* PERFECT PUZZLE ALIGNMENT */
+.stat span { color: var(--gold-rich); }
+
+/* --- Puzzle Area --- */
 .puzzleArea {
   width: 100%;
   display: flex;
@@ -189,10 +219,10 @@ body {
 .puzzleBox {
   width: 100%;
   max-width: 380px;
-  background: #fff;
+  background: rgba(255,255,255,0.85);
   border-radius: 24px;
   padding: 12px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.06);
   border: 1px solid rgba(0,0,0,0.02);
 }
 
@@ -203,16 +233,16 @@ body {
   display: block;
 }
 
-/* BUBBLE VIEWPORT */
+/* --- Bubbles --- */
 .bubbleArea {
   width: 100%;
   height: 280px;
-  background: var(--soft-gold);
+  background: linear-gradient(145deg, rgba(212,175,55,0.1), rgba(255,255,255,0.3));
   border-radius: 24px;
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(197, 160, 89, 0.1);
   margin-bottom: 20px;
+  border: 1px solid rgba(212,175,55,0.15);
 }
 
 .bubble {
@@ -225,26 +255,32 @@ body {
   justify-content: center;
   align-items: center;
   font-weight: 800;
-  color: var(--rich-gold);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.06);
+  color: var(--gold-rich);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.07);
   cursor: pointer;
   z-index: 10;
   will-change: transform;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* LUXURY ALERTS */
+.bubble:hover {
+  transform: scale(1.15);
+  box-shadow: 0 15px 30px rgba(212,175,55,0.35);
+}
+
+/* --- Luxury Messages --- */
 .message {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0.8);
-  padding: 16px 32px;
+  padding: 16px 36px;
   border-radius: 50px;
   font-weight: 800;
   z-index: 100;
   opacity: 0;
   visibility: hidden;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.4s cubic-bezier(0.175,0.885,0.32,1.275);
 }
 
 .message.show {
@@ -256,29 +292,33 @@ body {
 .message.success-ui {
   background: var(--success);
   color: white;
-  box-shadow: 0 15px 30px rgba(52, 199, 89, 0.3);
+  box-shadow: 0 12px 30px rgba(52,199,89,0.3);
 }
 
 .message.fail-ui {
   background: var(--error);
   color: white;
-  box-shadow: 0 15px 30px rgba(255, 59, 48, 0.3);
+  box-shadow: 0 12px 30px rgba(255,59,48,0.3);
 }
 
-/* Leaderboard */
+/* --- Leaderboard --- */
 .leaderboardList { margin-top: 15px; }
 .lbRow {
-  background: white;
+  background: rgba(255,255,255,0.85);
   padding: 18px;
   border-radius: 18px;
   margin-bottom: 12px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.05);
   transition: 0.3s;
 }
-.lbRow:hover { transform: translateX(8px); border-left: 4px solid var(--rich-gold); }
+
+.lbRow:hover {
+  transform: translateX(8px);
+  border-left: 4px solid var(--gold-rich);
+}
 
 .hidden { display: none !important; }
 
@@ -289,39 +329,4 @@ body {
   color: var(--text-light);
   text-transform: uppercase;
   letter-spacing: 1px;
-}
-.avatars {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  margin-top: 10px;
-}
-
-.avatarBtn {
-  border: 2px solid transparent;
-  background: transparent;
-  padding: 3px;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.avatarBtn img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: block;
-}
-
-.avatarBtn:hover {
-  transform: scale(1.08);
-}
-
-.avatarBtn.selected {
-  border-color: #00ff99;
-}
-.uiAvatar {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
 }
