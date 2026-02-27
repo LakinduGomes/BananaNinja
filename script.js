@@ -86,7 +86,7 @@ const AudioEngine = {
   let player = { nickname: "", avatar: "🥷" };
   let score = 0;
   let hp = 3;
-  let timeLeft = 10;
+  let timeLeft = 15;
   let timerId = null;
   let currentSolution = null;
   let roundActive = false;
@@ -136,7 +136,7 @@ const AudioEngine = {
   
   function startTimer() {
     stopTimer();
-    timeLeft = 10;
+    timeLeft = 15;
     updateUI();
     timerId = setInterval(() => {
       timeLeft--;
