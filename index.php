@@ -21,24 +21,24 @@
 
       <label class="label">Choose an avatar</label>
       <div class="avatars" id="avatarList">
-  <button class="avatarBtn" data-avatar="https://api.dicebear.com/7.x/bottts/png?seed=ninja&size=64">
-    <img src="https://api.dicebear.com/7.x/bottts/png?seed=ninja&size=64" alt="ninja">
+  <button class="avatarBtn" data-avatar="https://api.dicebear.com/7.x/bottts/png?seed=ninja&size=32">
+    <img src="https://api.dicebear.com/7.x/bottts/png?seed=ninja&size=32" alt="ninja">
   </button>
 
-  <button class="avatarBtn" data-avatar="https://api.dicebear.com/7.x/bottts/png?seed=monkey&size=64">
-    <img src="https://api.dicebear.com/7.x/bottts/png?seed=monkey&size=64" alt="monkey">
+  <button class="avatarBtn" data-avatar="https://api.dicebear.com/7.x/bottts/png?seed=monkey&size=32">
+    <img src="https://api.dicebear.com/7.x/bottts/png?seed=monkey&size=32" alt="monkey">
   </button>
 
-  <button class="avatarBtn" data-avatar="https://api.dicebear.com/7.x/bottts/png?seed=fox&size=64">
-    <img src="https://api.dicebear.com/7.x/bottts/png?seed=fox&size=64" alt="fox">
+  <button class="avatarBtn" data-avatar="https://api.dicebear.com/7.x/bottts/png?seed=fox&size=32">
+    <img src="https://api.dicebear.com/7.x/bottts/png?seed=fox&size=32" alt="fox">
   </button>
 
-  <button class="avatarBtn" data-avatar="https://api.dicebear.com/7.x/bottts/png?seed=tiger&size=64">
-    <img src="https://api.dicebear.com/7.x/bottts/png?seed=tiger&size=64" alt="tiger">
+  <button class="avatarBtn" data-avatar="https://api.dicebear.com/7.x/bottts/png?seed=tiger&size=32">
+    <img src="https://api.dicebear.com/7.x/bottts/png?seed=tiger&size=32" alt="tiger">
   </button>
 
-  <button class="avatarBtn" data-avatar="https://api.dicebear.com/7.x/bottts/png?seed=robot&size=64">
-    <img src="https://api.dicebear.com/7.x/bottts/png?seed=robot&size=64" alt="robot">
+  <button class="avatarBtn" data-avatar="https://api.dicebear.com/7.x/bottts/png?seed=robot&size=32">
+    <img src="https://api.dicebear.com/7.x/bottts/png?seed=robot&size=32" alt="robot">
   </button>
 </div>
 
