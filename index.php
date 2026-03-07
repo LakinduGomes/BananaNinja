@@ -1,108 +1,178 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <link rel="stylesheet" href="style.css"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Banana Ninja Slash </title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
   <div class="app">
+  <header class="premium-header">
+    <div class="header-content">
+        <div class="logo-wrapper">
+            <span class="emoji-icon">🍌</span>
+            <div class="title-text">
+                <h1>Banana Ninja <span>Slash</span></h1>
+                <p><i class="fa-solid fa-clock-rotate-left"></i> Precision is everything. Speed is key.</p>
+            </div>
+        </div>
+        <div class="header-decorator">
+            <div class="dot"></div>
+            <span class="status-text">LIVE SESSION</span>
+        </div>
+    </div>
+</header>
 
-    <header class="header">
-      <h1>🍌 Banana Ninja Slash</h1>
-      <p>Click the correct bubble before time runs out!</p>
-    </header>
-
-    <!-- SETUP -->
     <section id="setupScreen" class="card">
-      <h2>Player Setup</h2>
+    <div class="setup-header">
+        <div class="setup-icon"><i class="fa-solid fa-user-ninja"></i></div>
+        <h2>Ninja Profile</h2>
+        <p>Prepare for the banana slash</p>
+    </div>
 
-      <label class="label">Nickname</label>
-      <input id="nicknameInput" class="input" placeholder="Enter your nickname" maxlength="12"/>
+    <div class="input-group">
+        <label class="premium-label"><i class="fa-solid fa-signature"></i> NICKNAME</label>
+        <input id="nicknameInput" class="premium-input" placeholder="Your Ninja Name..." maxlength="12" />
+    </div>
 
-      <label class="label">Choose an avatar</label>
-      <div class="avatars" id="avatarList">
-  <button class="avatarBtn" data-avatar="https://api.dicebear.com/7.x/bottts/png?seed=ninja&size=32">
-    <img src="https://api.dicebear.com/7.x/bottts/png?seed=ninja&size=32" alt="ninja">
-  </button>
+    <div class="avatar-section">
+        <label class="premium-label"><i class="fa-solid fa-masks-theater"></i> CHOOSE AVATAR</label>
+        <div class="avatars-grid" id="avatarList">
+            <button class="avatarBtn selected" data-avatar="https://api.dicebear.com/7.x/bottts/png?seed=ninja&size=64">
+                <img src="https://api.dicebear.com/7.x/bottts/png?seed=ninja&size=64" alt="ninja">
+            </button>
+            <button class="avatarBtn" data-avatar="https://api.dicebear.com/7.x/bottts/png?seed=monkey&size=64">
+                <img src="https://api.dicebear.com/7.x/bottts/png?seed=monkey&size=64" alt="monkey">
+            </button>
+            <button class="avatarBtn" data-avatar="https://api.dicebear.com/7.x/bottts/png?seed=fox&size=64">
+                <img src="https://api.dicebear.com/7.x/bottts/png?seed=fox&size=64" alt="fox">
+            </button>
+            <button class="avatarBtn" data-avatar="https://api.dicebear.com/7.x/bottts/png?seed=tiger&size=64">
+                <img src="https://api.dicebear.com/7.x/bottts/png?seed=tiger&size=64" alt="tiger">
+            </button>
+            <button class="avatarBtn" data-avatar="https://api.dicebear.com/7.x/bottts/png?seed=robot&size=64">
+                <img src="https://api.dicebear.com/7.x/bottts/png?seed=robot&size=64" alt="robot">
+            </button>
+        </div>
+    </div>
 
-  <button class="avatarBtn" data-avatar="https://api.dicebear.com/7.x/bottts/png?seed=monkey&size=32">
-    <img src="https://api.dicebear.com/7.x/bottts/png?seed=monkey&size=32" alt="monkey">
-  </button>
+    <div class="setup-actions">
+        <button id="startBtn" class="btn-clean-primary">
+            READY TO SLASH <i class="fa-solid fa-play"></i>
+        </button>
+        <button id="viewLeaderboardBtn" class="btn-clean-outline">
+            <i class="fa-solid fa-ranking-star"></i> RANKINGS
+        </button>
+    </div>
+</section>
 
-  <button class="avatarBtn" data-avatar="https://api.dicebear.com/7.x/bottts/png?seed=fox&size=32">
-    <img src="https://api.dicebear.com/7.x/bottts/png?seed=fox&size=32" alt="fox">
-  </button>
-
-  <button class="avatarBtn" data-avatar="https://api.dicebear.com/7.x/bottts/png?seed=tiger&size=32">
-    <img src="https://api.dicebear.com/7.x/bottts/png?seed=tiger&size=32" alt="tiger">
-  </button>
-
-  <button class="avatarBtn" data-avatar="https://api.dicebear.com/7.x/bottts/png?seed=robot&size=32">
-    <img src="https://api.dicebear.com/7.x/bottts/png?seed=robot&size=32" alt="robot">
-  </button>
-</div>
-
-
-      <button id="startBtn" class="btn primary">Start Game</button>
-      <button id="viewLeaderboardBtn" class="btn">View Leaderboard</button>
-    </section>
-
-    <!-- GAME -->
     <section id="gameScreen" class="card hidden">
+      <div class="horizontal-container">
 
-      <div class="topBar">
-        <div class="playerInfo">
-          <span id="playerAvatar" class="playerAvatar">🥷</span>
-          <span id="playerName" class="playerName">Player</span>
+        <div class="game-sidebar">
+          <div class="topBar">
+            <div class="playerInfo">
+              <span id="playerAvatar" class="playerAvatar">🥷</span>
+              <span id="playerName" class="playerName">Player</span>
+            </div>
+
+            <div class="stats-grid">
+              <div class="stat">Score: <span id="score">0</span></div>
+              <div class="stat">HP: <span id="hp">3</span></div>
+              <div class="stat">Time: <span id="timeLeft">15</span>s</div>
+            </div>
+          </div>
+
+          <div class="puzzleArea">
+            <div class="puzzleBox">
+              <img id="puzzleImage" alt="Banana Puzzle" />
+            </div>
+          </div>
+
+          <div class="sidebar-actions">
+            <button id="quitBtn" class="btn danger">Quit</button>
+            <button id="nextBtn" class="btn primary hidden">Next Round</button>
+          </div>
         </div>
 
-        <div class="stats">
-          <div class="stat">Score: <span id="score">0</span></div>
-          <div class="stat">HP: <span id="hp">3</span></div>
-          <div class="stat">Time: <span id="timeLeft">10</span>s</div>
+        <div class="bubble-arena">
+          <div id="bubbleArea" class="bubbleArea"></div>
+          <div id="message" class="message"></div>
         </div>
+
       </div>
-
-      <div class="puzzleArea">
-        <div class="puzzleBox">
-          <img id="puzzleImage" alt="Banana Puzzle"/>
-        </div>
-      </div>
-
-      <div class="bubbleArea" id="bubbleArea"></div>
-
-      <div class="bottomBar">
-        <button id="quitBtn" class="btn danger">Quit</button>
-        <button id="nextBtn" class="btn hidden">Next Round</button>
-      </div>
-
-      <div id="message" class="message"></div>
     </section>
 
-    <!-- GAME OVER -->
     <section id="gameOverScreen" class="card hidden">
-      <h2>Game Over 💀</h2>
-      <p>Your final score: <strong id="finalScore">0</strong></p>
+      <div class="go-header">
+        <div class="skull-circle">
+          <i class="fa-solid fa-ghost"></i>
+        </div>
+        <h2 class="go-title">Session Ended</h2>
+        <p class="go-subtitle">Your ninja journey paused here.</p>
+      </div>
 
-      <button id="playAgainBtn" class="btn primary">Play Again</button>
-      <button id="goHomeBtn" class="btn">Back to Home</button>
-      <button id="leaderboardBtn2" class="btn">Leaderboard</button>
+      <div class="score-card-premium">
+        <span class="score-label">FINAL SCORE</span>
+        <div class="score-main">
+          <i class="fa-solid fa-bolt-lightning"></i>
+          <span id="finalScore">0</span>
+        </div>
+        <div id="newBestBadge" class="new-best hidden">
+          <i class="fa-solid fa-star"></i> NEW RECORD!
+        </div>
+      </div>
+
+      <div class="go-actions">
+        <button id="playAgainBtn" class="btn-action primary-gold">
+          <i class="fa-solid fa-rotate-right"></i> TRY AGAIN
+        </button>
+
+        <div class="btn-group-row">
+          <button id="leaderboardBtn2" class="btn-action secondary">
+            <i class="fa-solid fa-ranking-star"></i> RANKS
+          </button>
+          <button id="goHomeBtn" class="btn-action secondary">
+            <i class="fa-solid fa-house"></i> HOME
+          </button>
+        </div>
+      </div>
     </section>
-
-    <!-- LEADERBOARD -->
     <section id="leaderboardScreen" class="card hidden">
-      <h2>🏆 Leaderboard</h2>
-      <div id="leaderboardList" class="leaderboardList"></div>
+      <div class="lb-premium-header">
+        <div class="lb-badge">RANKINGS</div>
+        <h2>World Legends</h2>
+        <p>The top slayers of the season</p>
+      </div>
 
-      <button id="backBtn" class="btn">Back</button>
+      <div id="podiumContainer" class="premium-podium">
+      </div>
+
+      <div class="lb-scroll-area">
+        <div id="leaderboardList" class="premium-list"></div>
+      </div>
+
+      <div class="lb-footer">
+        <button id="backBtn" class="btn-clean">
+          <i class="fa-solid fa-chevron-left"></i> Back to Dojo
+        </button>
+      </div>
     </section>
 
     <footer class="footer">
-      <small>PHP backend + JavaScript frontend • Uses Banana API</small>
+      <small>PHP (MySQL) + JavaScript • Virtual Identity </small>
     </footer>
 
   </div>
 
-  <script src="script.js"></script>
+  <script src="assets/js/script.js"></script>
 </body>
+
 </html>
